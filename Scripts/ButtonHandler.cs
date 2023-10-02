@@ -5,20 +5,21 @@ using UnityEngine;
 
 public class ButtonHandler : MonoBehaviour
 {
-    public GameLogic gameLogic;
+    
     public string id;
-    public int idnum;
+    public int replyID;
     // Start is called before the first frame update
 
 
     public void OnClick()
     {
-        gameLogic.ProcessButtonPress(id, idnum);
+      
+       GameLogic.ProcessButtonPress(id, replyID);
     }
 
-    public void SetButtonID(string idset, int idnumber)
+    public void SetButtonID(string idset, int replyIDset)
     {
     id = idset;
-    idnum = idnumber;
+    replyID = replyIDset;
     }
 }

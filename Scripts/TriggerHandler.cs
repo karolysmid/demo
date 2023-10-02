@@ -39,7 +39,7 @@ public void DisableSelected()
         
 
 
-        GetComponent<MakeButtons>().TestWithDummytext();
+        StateHandler.HandleState();
         foreach(GameObject go in toEnable)
         go.SetActive(true);
     }
