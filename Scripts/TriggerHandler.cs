@@ -1,4 +1,6 @@
 
+using System;
+using System.Threading;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,14 +34,19 @@ public void DisableSelected()
     {
 
         Transform playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        Transform thisTransform = transform;
+        Vector3 direction = playerTransform.position-transform.position;
       //  thisTransform.position = new Vector3(transform.position.x, transform.position.y, playerTransform.position.z);
+
+      Quaternion lookrotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         
-        playerTransform.LookAt(new Vector3(transform.position.x, playerTransform.position.y, playerTransform.position.z));
+        Quaternion.Slerp(transform.rotation, lookrotation,Time.deltaTime);
+        StaticState.IncreaseStatus();
+
+      //  playerTransform.LookAt(new Vector3(transform.position.x, playerTransform.position.y, playerTransform.position.z));
         
 
 
-        GetComponent<MakeButtons>().TestWithDummytext();
+        StateHandler.HandleState();
         foreach(GameObject go in toEnable)
         go.SetActive(true);
     }

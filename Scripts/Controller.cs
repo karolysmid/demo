@@ -9,7 +9,7 @@ namespace Controllers{
     public class Controller : StarterAssetsInputs
     {
   
-    private bool controlsEnabled=true;
+    private bool controlsEnabled=false;
 
     public void SetControlsEnabled(bool state)
     {
